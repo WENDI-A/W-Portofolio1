@@ -103,9 +103,7 @@ const About = () => {
                 <h3 className="text-gray-900 dark:text-white font-medium text-lg leading-tight mb-1">
                   Software Engineer
                 </h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm">
-                  Huawei Ethiopia, 2025 - Present
-                </p>
+
               </div>
 
               {/* Location */}
