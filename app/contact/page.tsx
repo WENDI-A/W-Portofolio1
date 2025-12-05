@@ -1,11 +1,15 @@
 ﻿
 "use client"; // Required for client interactivity
 
-import React from "react";
+import React, { useState } from "react";
 import IconBadge from '../../components/IconBadge';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   const contactItems = [
     {
       icon: (
@@ -47,24 +51,37 @@ export default function ContactPage() {
     },
   ];
 
-  // const faqList = [
-  //   {
-  //     q: "What types of projects do you work on?",
-  //     a: "I focus on full-stack web development, modern UI builds, API development, and cloud-based systems.",
-  //   },
-  //   {
-  //     q: "How quickly do you respond?",
-  //     a: "I typically respond within 24 hours. For urgent matters, phone calls are faster.",
-  //   },
-  //   {
-  //     q: "Do you work remotely?",
-  //     a: "Yes, I am fully remote-ready and experienced working with global teams.",
-  //   },
-  //   {
-  //     q: "What's your typical project timeline?",
-  //     a: "Timeline depends on complexity: small (2–4 weeks), medium (1–3 months), large (3–6 months).",
-  //   },
-  // ];
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    const form = e.currentTarget;
+
+    try {
+      // Send email using EmailJS
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        form,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+
+      setSubmitStatus('success');
+      form.reset();
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus('error');
+
+      // Reset error message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="bg-transparent text-gray-900 dark:text-white px-6 md:px-20 py-20 transition-colors duration-300">
@@ -137,25 +154,16 @@ export default function ContactPage() {
         <div className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 hover:border-purple-500 transition-all rounded-2xl p-10 shadow-md shadow-black/20 transform hover:scale-102">
           <h2 className="text-2xl font-extrabold mb-8">📨 Send Me a Message</h2>
 
-          <form
-            className="space-y-6"
-            onSubmit={(e) => {
-              e.preventDefault();
-              const formData = new FormData(e.target as HTMLFormElement);
-              const data = Object.fromEntries(formData);
-              console.log('Form submitted:', data);
-              alert('Thank you for your message! I will get back to you soon.');
-              (e.target as HTMLFormElement).reset();
-            }}
-          >
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-2 gap-5">
               <div>
                 <label htmlFor="name" className="text-sm font-medium">Full Name *</label>
                 <input
                   id="name"
-                  name="name"
+                  name="from_name"
                   required
-                  className="w-full mt-2 px-4 py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white"
+                  disabled={isSubmitting}
+                  className="w-full mt-2 px-4 py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
                   type="text"
                 />
               </div>
@@ -164,9 +172,10 @@ export default function ContactPage() {
                 <label htmlFor="email" className="text-sm font-medium">Email Address *</label>
                 <input
                   id="email"
-                  name="email"
+                  name="from_email"
                   required
-                  className="w-full mt-2 px-4 py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white"
+                  disabled={isSubmitting}
+                  className="w-full mt-2 px-4 py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
                   type="email"
                 />
               </div>
@@ -178,7 +187,8 @@ export default function ContactPage() {
                 id="subject"
                 name="subject"
                 required
-                className="w-full mt-2 px-4 py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white"
+                disabled={isSubmitting}
+                className="w-full mt-2 px-4 py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
                 type="text"
               />
             </div>
@@ -189,16 +199,52 @@ export default function ContactPage() {
                 id="message"
                 name="message"
                 required
-                className="w-full mt-2 px-4 py-3 h-32 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all resize-none text-gray-900 dark:text-white"
+                disabled={isSubmitting}
+                className="w-full mt-2 px-4 py-3 h-32 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all resize-none text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 mt-2 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-extrabold text-lg text-white hover:opacity-95 transform hover:-translate-y-0.5 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-[#0d1117]"
+              disabled={isSubmitting}
+              className="w-full py-3 mt-2 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-extrabold text-lg text-white hover:opacity-95 transform hover:-translate-y-0.5 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-[#0d1117] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
             >
-              Send Message
+              {isSubmitting ? (
+                <>
+                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                'Send Message'
+              )}
             </button>
+
+            {/* Success Message */}
+            {submitStatus === 'success' && (
+              <div className="p-4 bg-green-100 dark:bg-green-900/30 border border-green-500 rounded-lg flex items-center gap-3">
+                <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="text-green-700 dark:text-green-300 font-medium">
+                  Message sent successfully! I'll get back to you soon.
+                </p>
+              </div>
+            )}
+
+            {/* Error Message */}
+            {submitStatus === 'error' && (
+              <div className="p-4 bg-red-100 dark:bg-red-900/30 border border-red-500 rounded-lg flex items-center gap-3">
+                <svg className="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="text-red-700 dark:text-red-300 font-medium">
+                  Failed to send message. Please try again or email me directly.
+                </p>
+              </div>
+            )}
           </form>
 
           <p className="text-gray-500 text-xs text-center mt-4">
@@ -206,22 +252,6 @@ export default function ContactPage() {
           </p>
         </div>
       </div>
-
-      {/* FAQ */}
-      {/* <h2 className="text-3xl font-extrabold text-center mb-10">Frequently Asked Questions</h2> */}
-      {/* <div className="grid md:grid-cols-2 gap-6 mb-20">
-        {faqList.map((item, i) => (
-          <details
-            key={i}
-            className="group bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 hover:border-indigo-500 rounded-xl p-6 transition-all duration-200 open:shadow-2xl"
-          >
-            <summary className="font-semibold mb-2 text-lg list-none cursor-pointer select-none">
-              ⚡ {item.q}
-            </summary>
-            <p className="text-gray-600 dark:text-gray-400 text-sm mt-3">{item.a}</p>
-          </details>
-        ))}
-      </div> */}
     </div>
   );
 }
