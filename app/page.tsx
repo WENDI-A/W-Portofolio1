@@ -117,21 +117,12 @@ export default function Home() {
                 View My Work
               </motion.a>
               <motion.a
-                href="#resume"
+                href="/WENDIMAGEGN-ABERA-FlowCV-Resume-20251106 (1)T.pdf"
+                download
                 className="bg-gray-800 hover:bg-gray-600 text-white font-bold py-3 px-8 text-lg rounded-lg transition transform duration-300"
                 variants={staggerItem}
                 whileHover={hoverScale}
                 whileTap={tapScale}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const section = document.getElementById('resume');
-                  if (section) {
-                    const headerOffset = 80;
-                    const elementPosition = section.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                  }
-                }}
               >
                 Download Resume
               </motion.a>

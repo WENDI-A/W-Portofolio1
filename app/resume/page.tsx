@@ -31,7 +31,7 @@ function ContactItem({ title, value, icon, href, onClick, gradient }: { title: s
 }
 
 export default function ResumePage() {
-  const tabs = ["Education", "Skills", "Projects"];
+  const tabs = ["Education", "Skills", "Certificates", "Projects"];
   const [active, setActive] = useState("Education");
 
   const containerVariants = {
@@ -103,7 +103,7 @@ export default function ResumePage() {
 
         <div className="flex justify-center gap-6 mt-10">
           <Motion.a
-            href="/resume.pdf"
+            href="/WENDIMAGEGN-ABERA-FlowCV-Resume-20251106 (1)T.pdf"
             download
             whileHover={{ scale: 1.03 }}
             className="px-8 py-4 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition text-base font-bold text-white"
@@ -111,13 +111,15 @@ export default function ResumePage() {
             Get PDF Resume
           </Motion.a>
 
-          <Motion.button
-            onClick={() => setActive("Education")}
+          <Motion.a
+            href="/WENDIMAGEGN-ABERA-FlowCV-Resume-20251106 (1)T.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}
             className="px-8 py-4 rounded-lg bg-gray-200 dark:bg-[#21262d] hover:bg-gray-300 dark:hover:bg-[#30363d] transition text-base font-bold text-gray-900 dark:text-white"
           >
             View Online
-          </Motion.button>
+          </Motion.a>
         </div>
       </div>
 

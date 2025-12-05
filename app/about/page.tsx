@@ -142,7 +142,7 @@ const About = () => {
                   year: '2025',
                   title: 'Computer Science Degree',
                   org: 'Hawassa University Institute of Technology',
-                  desc: 'Graduated with Distinction (CGPA: 3.51/4.0)'
+                  desc: 'Graduated with Distinction'
                 },
                 {
                   year: '2024 - 2025',

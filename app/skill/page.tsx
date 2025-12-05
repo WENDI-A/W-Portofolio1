@@ -48,7 +48,7 @@ const skillIcons = {
   'Framer Motion': () => <SiFramer className="w-6 h-6 text-pink-500" />,
   'Three.js': () => <SiThreedotjs className="w-6 h-6 text-gray-100" />,
   'Webpack': () => <SiWebpack className="w-6 h-6 text-blue-500" />,
-  'Babel': () => <SiBabel className="w-6 h-6 text-yellow-500" />,
+
 
   // --- Backend ---
   'Node.js': () => <FaNode className="w-6 h-6 text-green-500" />,
@@ -59,7 +59,6 @@ const skillIcons = {
 
   // New Backend Tools
   'MongoDB': () => <SiMongodb className="w-6 h-6 text-green-500" />,
-  'PostgreSQL': () => <SiPostgresql className="w-6 h-6 text-blue-700" />,
   'Prisma': () => <SiPrisma className="w-6 h-6 text-blue-400" />,
   'JWT': () => <SiJsonwebtokens className="w-6 h-6 text-green-600" />,
   'Redis': () => <SiRedis className="w-6 h-6 text-red-500" />,
@@ -75,7 +74,7 @@ const skillIcons = {
   'Supabase': () => <SiSupabase className="w-6 h-6 text-green-400" />,
   'Linux': () => <SiLinux className="w-6 h-6 text-yellow-400" />,
   'Terminal': () => <FaTools className="w-6 h-6 text-gray-400" />,
-  'AWS': () => <FaCloud className="w-6 h-6 text-orange-400" />,
+
 
   // --- CMS / No-Code ---
   'WordPress': () => <FaWordpress className="w-6 h-6 text-blue-400" />,
@@ -204,10 +203,21 @@ const Skill = () => {
               bg: 'bg-gradient-to-r from-red-500 to-pink-500',
             };
 
+            // Map certificate titles to PDF links
+            const certLinks: { [key: string]: string } = {
+              'JavaScript Algorithms and Data Structures': '/freeCodeCamp.pdf',
+              'Programming Fundamentals': '/udacity.pdf',
+            };
+
+            const pdfLink = certLinks[cert.title] || '#';
+
             return (
-              <motion.div
+              <motion.a
                 key={index}
-                className="bg-gray-100 dark:bg-gray-800 p-10 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-700 text-center flex flex-col items-center transform transition duration-500 hover:shadow-2xl hover:border-indigo-500"
+                href={pdfLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-100 dark:bg-gray-800 p-10 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-700 text-center flex flex-col items-center transform transition duration-500 hover:shadow-2xl hover:border-indigo-500 cursor-pointer group"
                 variants={staggerItem}
                 whileHover={hoverScale}
               >
@@ -217,7 +227,11 @@ const Skill = () => {
                 <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{cert.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 text-lg">{cert.org}</p>
                 <p className="text-gray-700 dark:text-gray-500 mt-2 font-semibold">{cert.year}</p>
-              </motion.div>
+
+                <div className="mt-4 inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold group-hover:gap-3 transition-all">
+                  View Certificate <span aria-hidden>→</span>
+                </div>
+              </motion.a>
             );
           })}
 

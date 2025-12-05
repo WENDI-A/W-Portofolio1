@@ -37,7 +37,6 @@ export const skillsData: SkillCategory[] = [
             { name: 'Framer Motion' },
             { name: 'Three.js' },
             { name: 'Webpack' },
-            { name: 'Babel' },
         ],
     },
     {
@@ -50,7 +49,6 @@ export const skillsData: SkillCategory[] = [
             { name: 'MySQL' },
             { name: 'REST APIs' },
             { name: 'MongoDB' },
-            { name: 'PostgreSQL' },
             { name: 'Prisma' },
             { name: 'JWT' },
         ],
@@ -66,7 +64,7 @@ export const skillsData: SkillCategory[] = [
             { name: 'Firebase' },
             { name: 'Supabase' },
             { name: 'Figma' },
-            { name: 'AWS' },
+
         ],
     },
     {
