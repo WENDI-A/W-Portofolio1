@@ -16,7 +16,7 @@ import SkillPage from './skill/page';
 import ProjectsPage from './projects/page';
 import ResumePage from './resume/page';
 import ContactPage from './contact/page';
-import Footer from './Footer/page';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -69,6 +69,8 @@ export default function Home() {
                 text={[
                   "Software Engineer",
                   "Full-Stack Developer",
+                  "Computer Science Graduated",
+                  "Tech Enthusiast"
 
 
                 ]}

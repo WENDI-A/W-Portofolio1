@@ -31,7 +31,7 @@ const About = () => {
               <FaUserFriends />
             </IconBadge>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">About Me</h1>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 ">About Me</h1>
           <p className="text-lg text-gray-600 dark:text-gray-400">
             Innovative software engineer driven by the pursuit of transformative
             solutions that create meaningful impact.

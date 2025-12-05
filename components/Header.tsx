@@ -58,7 +58,7 @@ const Header = () => {
                 <a
                     href="#home"
                     onClick={(e) => handleNavClick(e, "home")}
-                    className="text-2xl font-bold cursor-pointer hover:text-purple-400 transition-colors"
+                    className="text-2xl font-bold cursor-pointer hover:text-purple-400 transition-colors text-xl font-bold bg-gradient-to-r from-[#a855f7] to-[#6366f1] bg-clip-text text-transparent"
                 >
                     WENDIMAGEGN ABERA
                 </a>

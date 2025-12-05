@@ -1,6 +1,6 @@
-﻿
+﻿"use client";
+
 import React from 'react';
-import Footer from './Footer';
 import IconBadge from '../../components/IconBadge';
 import { skillsData, certifications } from '../../data/skillsData';
 import { motion } from 'framer-motion';
@@ -95,7 +95,7 @@ const skillIcons = {
 const DefaultIcon = () => <div className="w-6 h-6 rounded bg-gray-600" />;
 
 // Reusable badge wrapper
-function TechIconBadge({ icon: IconComponent, name }) {
+function TechIconBadge({ icon: IconComponent, name }: { icon: React.ComponentType<{ className?: string }>, name: string }) {
   return (
     <div className="flex flex-col items-center justify-center gap-2">
       <div className="w-14 h-14 rounded-xl flex items-center justify-center
@@ -168,7 +168,7 @@ const Skill = () => {
               {/* Icon Grid */}
               <div className="flex flex-wrap gap-4 justify-center">
                 {category.skills.map((skill, i) => {
-                  const IconComponent = skillIcons[skill.name] || DefaultIcon;
+                  const IconComponent = skillIcons[skill.name as keyof typeof skillIcons] || DefaultIcon;
                   return (
                     <TechIconBadge key={i} icon={IconComponent} name={skill.name} />
                   );
@@ -199,7 +199,7 @@ const Skill = () => {
           variants={staggerContainer}
         >
           {certifications.map((cert, index) => {
-            const { icon: CertIcon, bg } = certIcons[cert.title] || {
+            const { icon: CertIcon, bg } = certIcons[cert.title as keyof typeof certIcons] || {
               icon: FaCertificate,
               bg: 'bg-gradient-to-r from-red-500 to-pink-500',
             };

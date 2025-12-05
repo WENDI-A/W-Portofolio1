@@ -21,8 +21,8 @@ const AnimatedAvatar = () => {
             {/* Avatar Face */}
             <div className="w-full h-full rounded-full overflow-hidden shadow-2xl">
                 <Image
-                    src="/avator.png"
-                    alt="Avatar"
+                    src="/profile-photo.png"
+                    alt="Wendimagegn Abera - Software Engineer"
                     width={356}
                     height={356}
                     className="object-cover w-full h-full"
