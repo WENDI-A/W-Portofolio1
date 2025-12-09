@@ -69,7 +69,7 @@ export default function Home() {
                 text={[
                   "Software Engineer",
                   "Full-Stack Developer",
-                  "Computer Science Graduated",
+                  "Computer Science Graduate",
                   "Tech Enthusiast"
 
 

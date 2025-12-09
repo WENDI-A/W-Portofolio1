@@ -1,4 +1,4 @@
-﻿
+
 "use client"; // Required for client interactivity
 
 import React from "react";
@@ -35,17 +35,25 @@ export default function ProjectsPage() {
     {
       title: "Family Reuniting System",
       description: "A comprehensive platform designed to help families reconnect and stay connected. Features include family tree management, event planning, and real-time communication tools.",
-      techStack: ["React", "Node.js", "MySQL", "Tailwind", "Figma"]
+      techStack: ["React", "Node.js", "MySQL", "Tailwind", "Figma"],
+      liveDemo: "https://wendi-portfolio.netlify.app/",
+      codeRepo: "https://github.com/WENDI-A/family-reunite"
     },
     {
       title: "Pro Fitness",
       description: "A modern fitness tracking application that helps users monitor their workouts, track progress, and achieve their fitness goals with personalized workout plans.",
-      techStack: ["React", "Node.js", "MySQL", "Tailwind", "Figma"]
+      techStack: ["React", "Node.js", "MySQL", "Tailwind", "Figma"],
+      liveDemo: "https://fitness-blush-iota.vercel.app/",
+      codeRepo: "https://github.com/WENDI-A/pro-fitness",
+      image: "gym.png"
     },
     {
       title: "Ethio Travel",
       description: "A travel booking and management system showcasing Ethiopia's beautiful destinations. Features tour packages, hotel bookings, and travel itinerary planning.",
-      techStack: ["React", "Node.js", "MySQL", "Tailwind", "Figma"]
+      techStack: ["React", "Node.js", "MySQL", "Tailwind", "Figma"],
+      liveDemo: "https://ethio-travel-agent.vercel.app/",
+      codeRepo: "https://github.com/WENDI-A/ethio-travel",
+      image: "ethiotravel.png"
     }
   ];
 
@@ -53,12 +61,17 @@ export default function ProjectsPage() {
     {
       title: "Home",
       description: "A real estate management platform for property listings, virtual tours, and seamless communication between buyers and sellers.",
-      techStack: ["Python", "Docker", "Git", "Linux"]
+      techStack: ["Python", "Docker", "Git", "Linux"],
+      liveDemo: "https://home-project.vercel.app/",
+      codeRepo: "https://github.com/WENDI-A/home-project"
     },
     {
       title: "Portfolio",
       description: "A personal portfolio website showcasing my skills, projects, and professional experience with modern design and smooth animations.",
-      techStack: ["React", "Next.js", "TypeScript", "Tailwind", "Git"]
+      techStack: ["React", "Next.js", "TypeScript", "Tailwind", "Git"],
+      liveDemo: "https://wendi-portfolio.netlify.app/",
+     codeRepo: "https://github.com/WENDI-A/portfolio1",
+      image: "WP.png"
     }
   ];
 
@@ -120,19 +133,24 @@ export default function ProjectsPage() {
             key={i}
             variants={staggerItem}
           >
-            <Atropos
+            {/* <Atropos
               className="w-full rounded-xl"
               activeOffset={15}
               shadow={false}
               rotateXMax={8}
               rotateYMax={8}
-            >
+            > */}
               <motion.div
-                className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-xl p-7
-                            hover:shadow-2xl transform transition duration-300 cursor-pointer hover:bg-gray-50 dark:hover:bg-[#0f1720]"
-                whileHover={cardHover}
+                className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden
+                            hover:shadow-2xl transform transition duration-300 cursor-pointer"
               >
-                <div className="h-40 bg-gray-200 dark:bg-[#0d1117] rounded-lg mb-5"></div>
+                <div className="h-48 bg-gray-200 dark:bg-[#0d1117] hover:scale-105 transition-transform duration-300" 
+                     style={{ 
+                       backgroundImage: project.image ? `url(/${project.image})` : 'none',
+                       backgroundSize: '100% 100%',
+                       backgroundRepeat: 'no-repeat'
+                     }}></div>
+                <div className="p-7 hover:bg-gray-50 dark:hover:bg-[#0f1720] transition duration-300">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">{project.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">
                   {project.description}
@@ -142,15 +160,37 @@ export default function ProjectsPage() {
                     <TechIconBadge key={t}>{techIcons[tech]}</TechIconBadge>
                   ))}
                 </div>
-                <motion.button
-                  className="mt-4 text-sm bg-gray-200 dark:bg-[#21262d] px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white"
-                  whileHover={hoverScale}
-                  whileTap={tapScale}
-                >
-                  View Code
-                </motion.button>
+                <div className="flex gap-3 mt-4">
+                  {project.codeRepo && (
+                    <motion.a
+                      href={project.codeRepo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm bg-gray-200 dark:bg-[#21262d] px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white"
+                      whileHover={hoverScale}
+                      whileTap={tapScale}
+                    >
+                      View Code
+                    </motion.a>
+                  )}
+                  {project.liveDemo && (
+                    <motion.a
+                      href={project.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm bg-gray-200 dark:bg-[#21262d] px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white"
+                      whileHover={hoverScale}
+                      whileTap={tapScale}
+                    >
+                      Live Demo
+                    </motion.a>
+
+                    
+                  )}
+                </div>
+                </div>
               </motion.div>
-            </Atropos>
+            {/* </Atropos> */}
           </motion.div>
         ))}
       </motion.div>
@@ -178,19 +218,24 @@ export default function ProjectsPage() {
             key={i}
             variants={staggerItem}
           >
-            <Atropos
+            {/* <Atropos
               className="w-full rounded-xl"
               activeOffset={15}
               shadow={false}
               rotateXMax={8}
               rotateYMax={8}
-            >
+            > */}
               <motion.div
-                className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-xl p-7
-                            hover:shadow-2xl transform transition duration-300 cursor-pointer hover:bg-gray-50 dark:hover:bg-[#0f1720]"
-                whileHover={cardHover}
+                className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden
+                            hover:shadow-2xl transform transition duration-300 cursor-pointer"
               >
-                <div className="h-32 bg-gray-200 dark:bg-[#0d1117] rounded-lg mb-5"></div>
+                <div className="h-40 bg-gray-200 dark:bg-[#0d1117] hover:scale-105 transition-transform duration-300" 
+                     style={{ 
+                       backgroundImage: project.image ? `url(/${project.image})` : 'none',
+                       backgroundSize: '100% 100%',
+                       backgroundRepeat: 'no-repeat'
+                     }}></div>
+                <div className="p-7 hover:bg-gray-50 dark:hover:bg-[#0f1720] transition duration-300">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">{project.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">
                   {project.description}
@@ -200,15 +245,38 @@ export default function ProjectsPage() {
                     <TechIconBadge key={t}>{techIcons[tech]}</TechIconBadge>
                   ))}
                 </div>
-                <motion.button
-                  className="mt-4 text-sm bg-gray-200 dark:bg-[#21262d] px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white"
-                  whileHover={hoverScale}
-                  whileTap={tapScale}
-                >
-                  View Code
-                </motion.button>
+                 <div className="flex gap-3 mt-4">
+                  {project.codeRepo && (
+                    <motion.a
+                      href={project.codeRepo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm bg-gray-200 dark:bg-[#21262d] px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white"
+                      whileHover={hoverScale}
+                      whileTap={tapScale}
+                    >
+                      View Code
+                    </motion.a>
+                  )}
+                  {project.liveDemo && (
+                    <motion.a
+                      href={project.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm bg-gray-200 dark:bg-[#21262d] px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white"
+                      whileHover={hoverScale}
+                      whileTap={tapScale}
+                    >
+                      Live Demo
+                    </motion.a>
+
+                    
+                  )}
+                </div>
+
+                </div>
               </motion.div>
-            </Atropos>
+            {/* </Atropos> */}
           </motion.div>
         ))}
       </motion.div>
