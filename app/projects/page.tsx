@@ -54,7 +54,16 @@ export default function ProjectsPage() {
       liveDemo: "https://ethio-travel-agent.vercel.app/",
       codeRepo: "https://github.com/WENDI-A/ethio-travel",
       image: "ethiotravel.png"
-    }
+    },
+
+   {
+  title: "Room Booking System",
+  description: "A modern web application that allows users to easily browse, book, and manage rooms. Built with a responsive design, it streamlines room reservations while providing a smooth and intuitive user experience.",
+  techStack: ["React", "Node.js", "MySQL", "Tailwind CSS", "Figma"],
+  liveDemo: "https://room-booking-system-swart.vercel.app/",
+  codeRepo: "https://github.com/WENDI-A/room-booking-system",
+  image: "room.png"
+}
   ];
 
   const otherProjects = [
