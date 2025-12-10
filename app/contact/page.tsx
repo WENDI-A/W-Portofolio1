@@ -84,23 +84,23 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-transparent text-gray-900 dark:text-white px-6 md:px-20 py-20 transition-colors duration-300">
+    <div className="bg-transparent text-gray-900 dark:text-white px-4 sm:px-6 lg:px-20 py-12 sm:py-16 lg:py-20 transition-colors duration-300">
       {/* Header */}
-      <div className="text-center mb-20">
-        <div className="w-20 h-20 mx-auto motion-safe:animate-pulse">
+      <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto motion-safe:animate-pulse">
           <IconBadge size="xl" bgClass="bg-gradient-to-r from-indigo-500 to-purple-500">💬</IconBadge>
         </div>
-        <h1 className="text-4xl font-extrabold mt-6">Get In Touch</h1>
-        <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mt-4 sm:mt-6">Get In Touch</h1>
+        <p className="text-gray-400 mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base">
           I'm always interested in hearing about new opportunities and projects. Let's connect and discuss how we can collaborate.
         </p>
       </div>
 
       {/* Contact & Form */}
-      <div className="grid md:grid-cols-2 gap-10 mb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 mb-12 sm:mb-16 lg:mb-20">
         {/* Contact Info Left */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-extrabold mb-4">📮 Let's Connect</h2>
+        <div className="space-y-4 sm:space-y-6">
+          <h2 className="text-xl sm:text-2xl font-extrabold mb-3 sm:mb-4">📮 Let's Connect</h2>
 
           {contactItems.map((item, i) => (
             <a
@@ -109,41 +109,41 @@ export default function ContactPage() {
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
               aria-label={`${item.title}: ${item.value}`}
-              className="group block bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20 transition-all duration-300 rounded-2xl p-6 flex gap-4 items-start transform hover:-translate-y-1"
+              className="group block bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20 transition-all duration-300 rounded-2xl p-4 sm:p-6 flex gap-3 sm:gap-4 items-start transform hover:-translate-y-1"
             >
-              <div className={`shrink-0 w-12 h-12 rounded-full flex items-center justify-center ${item.gradient} transform transition-transform duration-300 group-hover:translate-y-[-4px] shadow-lg`}>
+              <div className={`shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center ${item.gradient} transform transition-transform duration-300 group-hover:translate-y-[-4px] shadow-lg`}>
                 {item.icon}
               </div>
               <div>
-                <h4 className="font-semibold text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{item.title}</h4>
-                <p className="text-gray-900 dark:text-white text-base mt-1 font-medium">{item.value}</p>
-                <span className="text-indigo-400 text-sm hover:underline inline-block mt-2">{item.linkText}</span>
+                <h4 className="font-semibold text-xs sm:text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">{item.title}</h4>
+                <p className="text-gray-900 dark:text-white text-sm sm:text-base mt-1 font-medium">{item.value}</p>
+                <span className="text-indigo-400 text-xs sm:text-sm hover:underline inline-block mt-2">{item.linkText}</span>
               </div>
             </a>
           ))}
 
           {/* Socials */}
-          <div className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-2xl hover:border-purple-500 p-6 transition-all duration-300">
-            <h4 className="font-semibold text-lg mb-4">Follow Me</h4>
-            <div className="space-y-3">
+          <div className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-2xl hover:border-purple-500 p-4 sm:p-6 transition-all duration-300">
+            <h4 className="font-semibold text-base sm:text-lg mb-3 sm:mb-4">Follow Me</h4>
+            <div className="space-y-2 sm:space-y-3">
               <a
-                className="w-full flex items-center justify-center gap-3 py-3 bg-[#21262d] hover:bg-[#30363d] rounded-lg font-semibold text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full flex items-center justify-center gap-2 sm:gap-3 py-2 sm:py-3 bg-[#21262d] hover:bg-[#30363d] rounded-lg font-semibold text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base"
                 href="https://github.com/WENDI-A"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit GitHub profile"
               >
-                <FaGithub className="text-xl" />
+                <FaGithub className="text-lg sm:text-xl" />
                 <span>GitHub</span>
               </a>
               <a
-                className="w-full flex items-center justify-center gap-3 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-lg font-semibold text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full flex items-center justify-center gap-2 sm:gap-3 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-lg font-semibold text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base"
                 href="https://www.linkedin.com/in/wendimagegn-abera"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit LinkedIn profile"
               >
-                <FaLinkedin className="text-xl" />
+                <FaLinkedin className="text-lg sm:text-xl" />
                 <span>LinkedIn</span>
               </a>
             </div>
@@ -151,63 +151,63 @@ export default function ContactPage() {
         </div>
 
         {/* Contact Form Right */}
-        <div className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 hover:border-purple-500 transition-all rounded-2xl p-10 shadow-md shadow-black/20 transform hover:scale-102">
-          <h2 className="text-2xl font-extrabold mb-8">📨 Send Me a Message</h2>
+        <div className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 hover:border-purple-500 transition-all rounded-2xl p-6 sm:p-8 lg:p-10 shadow-md shadow-black/20 transform hover:scale-102">
+          <h2 className="text-xl sm:text-2xl font-extrabold mb-6 sm:mb-8">📨 Send Me a Message</h2>
 
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div className="grid md:grid-cols-2 gap-5">
+          <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               <div>
-                <label htmlFor="name" className="text-sm font-medium">Full Name *</label>
+                <label htmlFor="name" className="text-xs sm:text-sm font-medium">Full Name *</label>
                 <input
                   id="name"
                   name="from_name"
                   required
                   disabled={isSubmitting}
-                  className="w-full mt-2 px-4 py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full mt-1 sm:mt-2 px-3 sm:px-4 py-2 sm:py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                   type="text"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="text-sm font-medium">Email Address *</label>
+                <label htmlFor="email" className="text-xs sm:text-sm font-medium">Email Address *</label>
                 <input
                   id="email"
                   name="from_email"
                   required
                   disabled={isSubmitting}
-                  className="w-full mt-2 px-4 py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full mt-1 sm:mt-2 px-3 sm:px-4 py-2 sm:py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                   type="email"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="subject" className="text-sm font-medium">Subject *</label>
+              <label htmlFor="subject" className="text-xs sm:text-sm font-medium">Subject *</label>
               <input
                 id="subject"
                 name="subject"
                 required
                 disabled={isSubmitting}
-                className="w-full mt-2 px-4 py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full mt-1 sm:mt-2 px-3 sm:px-4 py-2 sm:py-3 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                 type="text"
               />
             </div>
 
             <div>
-              <label htmlFor="message" className="text-sm font-medium">Message *</label>
+              <label htmlFor="message" className="text-xs sm:text-sm font-medium">Message *</label>
               <textarea
                 id="message"
                 name="message"
                 required
                 disabled={isSubmitting}
-                className="w-full mt-2 px-4 py-3 h-32 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all resize-none text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full mt-1 sm:mt-2 px-3 sm:px-4 py-2 sm:py-3 h-24 sm:h-32 bg-white dark:bg-[#0d1117] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all resize-none text-gray-900 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 mt-2 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-extrabold text-lg text-white hover:opacity-95 transform hover:-translate-y-0.5 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-[#0d1117] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+              className="w-full py-2 sm:py-3 mt-2 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-extrabold text-sm sm:text-base lg:text-lg text-white hover:opacity-95 transform hover:-translate-y-0.5 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-[#0d1117] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
@@ -247,7 +247,7 @@ export default function ContactPage() {
             )}
           </form>
 
-          <p className="text-gray-500 text-xs text-center mt-4">
+          <p className="text-gray-500 text-xs sm:text-sm text-center mt-3 sm:mt-4">
             * I typically respond within 24 hours.
           </p>
         </div>

@@ -91,18 +91,20 @@ const skillIcons = {
 };
 
 
-const DefaultIcon = () => <div className="w-6 h-6 rounded bg-gray-600" />;
+const DefaultIcon = () => <div className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded bg-gray-600" />;
 
 // Reusable badge wrapper
 function TechIconBadge({ icon: IconComponent, name }: { icon: React.ComponentType<{ className?: string }>, name: string }) {
+  if (!IconComponent || !name) return null;
+  
   return (
-    <div className="flex flex-col items-center justify-center gap-2">
-      <div className="w-14 h-14 rounded-xl flex items-center justify-center
+    <div className="flex flex-col items-center justify-center gap-1 sm:gap-2 min-w-[60px] sm:min-w-[70px]">
+      <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl flex items-center justify-center
                       bg-gradient-to-br from-gray-100 to-gray-300 dark:from-[#1e293b] dark:to-[#0f172a]
-                      border border-gray-300 dark:border-gray-700 shadow-md hover:scale-110 transition">
-        <IconComponent />
+                      border border-gray-300 dark:border-gray-700 shadow-md hover:scale-110 transition-transform duration-200">
+        <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
       </div>
-      <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">{name}</span>
+      <span className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-medium text-center leading-tight">{name}</span>
     </div>
   );
 }
@@ -121,7 +123,7 @@ const certIcons = {
 
 const Skill = () => {
   return (
-    <div className="bg-transparent text-gray-900 dark:text-gray-100 font-sans px-6 py-12 transition-colors duration-300">
+    <div className="bg-transparent text-gray-900 dark:text-gray-100 font-sans px-4 sm:px-6 py-8 sm:py-12 transition-colors duration-300">
       {/* Header */}
       <motion.header
         className="text-center mb-12"
@@ -130,59 +132,64 @@ const Skill = () => {
         viewport={{ once: false, amount: 0.3 }}
         variants={scrollReveal}
       >
-        <h1 className="text-5xl font-extrabold mb-4">Skills & Expertise</h1>
-        <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-lg">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold mb-4">Skills & Expertise</h1>
+        <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg">
           A comprehensive overview of my technical skills and professional competencies � interactive, animated and easy to scan.
         </p>
       </motion.header>
 
       {/* Skills by Category */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto mb-8 sm:mb-12"
         initial="initial"
         whileInView="animate"
-        viewport={{ once: false, amount: 0.3, margin: "-100px" }}
+        viewport={{ once: false, amount: 0.1, margin: "-50px" }}
         variants={staggerContainer}
       >
-        {skillsData.map((category, index) => {
-          const CategoryIcon = category.icon;
+        {skillsData && skillsData.length > 0 ? skillsData.map((category, index) => {
+          const CategoryIcon = category?.icon || FaReact;
           return (
             <motion.div
-              key={index}
-              className="group bg-gray-100 dark:bg-[#161b22] p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col transform transition duration-500 hover:shadow-2xl hover:border-indigo-500"
+              key={`skill-category-${index}`}
+              className="group bg-gray-100 dark:bg-[#161b22] p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col transform transition duration-500 hover:shadow-2xl hover:border-indigo-500 w-full min-h-[300px]"
               aria-label={category.title}
               variants={staggerItem}
               whileHover={{ y: -10, scale: 1.02 }}
             >
               {/* Category Header */}
-              <div className="flex flex-col items-center text-center mb-6">
+              <div className="flex flex-col items-center text-center mb-4 sm:mb-6">
                 <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
                   <IconBadge size="lg" bgClass={category.bg}>
                     <CategoryIcon />
                   </IconBadge>
                 </div>
-                <h3 className="font-extrabold text-2xl mt-4">{category.title}</h3>
+                <h3 className="font-extrabold text-lg sm:text-xl lg:text-2xl mt-3 sm:mt-4">{category.title}</h3>
               </div>
 
               {/* Icon Grid */}
-              <div className="flex flex-wrap gap-4 justify-center">
-                {category.skills.map((skill, i) => {
+              <div className="flex flex-wrap gap-3 sm:gap-4 justify-center flex-1">
+                {category.skills && category.skills.length > 0 ? category.skills.map((skill, i) => {
                   const IconComponent = skillIcons[skill.name as keyof typeof skillIcons] || DefaultIcon;
                   return (
-                    <TechIconBadge key={i} icon={IconComponent} name={skill.name} />
+                    <TechIconBadge key={`skill-${index}-${i}`} icon={IconComponent} name={skill.name} />
                   );
-                })}
-
+                }) : (
+                  <div className="text-gray-500 text-sm">No skills available</div>
+                )}
               </div>
             </motion.div>
           );
-        })}
+        }) : (
+          <div className="col-span-full text-center text-gray-500">
+            <p>Loading skills...</p>
+          </div>
+        )}
       </motion.div>
 
       {/* Certifications & Training */}
-      <section className="max-w-6xl mx-auto mt-12 mb-16">
+      <section className="max-w-6xl mx-auto mt-8 sm:mt-12 mb-12 sm:mb-16">
         <motion.h2
-          className="text-3xl font-extrabold mb-6 text-center text-gray-900 dark:text-white"
+          className="text-xl sm:text-2xl lg:text-3xl font-extrabold mb-4 sm:mb-6 text-center text-gray-900 dark:text-white"
           initial="initial"
           whileInView="animate"
           viewport={{ once: false, amount: 0.3 }}
@@ -191,7 +198,7 @@ const Skill = () => {
           Certifications & Training
         </motion.h2>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8"
           initial="initial"
           whileInView="animate"
           viewport={{ once: false, amount: 0.3 }}
@@ -217,18 +224,18 @@ const Skill = () => {
                 href={pdfLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-100 dark:bg-gray-800 p-10 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-700 text-center flex flex-col items-center transform transition duration-500 hover:shadow-2xl hover:border-indigo-500 cursor-pointer group"
+                className="bg-gray-100 dark:bg-gray-800 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-700 text-center flex flex-col items-center transform transition duration-500 hover:shadow-2xl hover:border-indigo-500 cursor-pointer group"
                 variants={staggerItem}
                 whileHover={hoverScale}
               >
                 <IconBadge size="xl" bgClass={bg} className="mb-4">
                   <CertIcon />
                 </IconBadge>
-                <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{cert.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-lg">{cert.org}</p>
-                <p className="text-gray-700 dark:text-gray-500 mt-2 font-semibold">{cert.year}</p>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 text-gray-900 dark:text-white">{cert.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base lg:text-lg">{cert.org}</p>
+                <p className="text-gray-700 dark:text-gray-500 mt-2 font-semibold text-sm sm:text-base">{cert.year}</p>
 
-                <div className="mt-4 inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold group-hover:gap-3 transition-all">
+                <div className="mt-4 inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold group-hover:gap-3 transition-all text-sm sm:text-base">
                   View Certificate <span aria-hidden>→</span>
                 </div>
               </motion.a>

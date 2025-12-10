@@ -92,7 +92,7 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div className="bg-transparent text-gray-900 dark:text-white px-6 md:px-20 py-4 transition-colors duration-300">
+    <div className="bg-transparent text-gray-900 dark:text-white px-4 sm:px-6 lg:px-20 py-4 transition-colors duration-300">
       {/* Header */}
       <motion.div
         className="text-center mb-16"
@@ -112,7 +112,7 @@ export default function ProjectsPage() {
 
       {/* Featured Projects */}
       <motion.h2
-        className="text-xl font-semibold mb-6 flex items-center gap-2 text-gray-900 dark:text-white"
+        className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 flex items-center gap-2 text-gray-900 dark:text-white"
         initial="initial"
         whileInView="animate"
         viewport={{ once: false, amount: 0.3 }}
@@ -122,7 +122,7 @@ export default function ProjectsPage() {
       </motion.h2>
 
       <motion.div
-        className="grid md:grid-cols-2 gap-10 mb-20"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-12 sm:mb-16 lg:mb-20"
         initial="initial"
         whileInView="animate"
         viewport={{ once: false, amount: 0.3 }}
@@ -144,29 +144,29 @@ export default function ProjectsPage() {
                 className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden
                             hover:shadow-2xl transform transition duration-300 cursor-pointer"
               >
-                <div className="h-48 bg-gray-200 dark:bg-[#0d1117] hover:scale-105 transition-transform duration-300" 
+                <div className="h-40 sm:h-48 bg-gray-200 dark:bg-[#0d1117] hover:scale-105 transition-transform duration-300" 
                      style={{ 
                        backgroundImage: project.image ? `url(/${project.image})` : 'none',
                        backgroundSize: '100% 100%',
                        backgroundRepeat: 'no-repeat'
                      }}></div>
-                <div className="p-7 hover:bg-gray-50 dark:hover:bg-[#0f1720] transition duration-300">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">
+                <div className="p-4 sm:p-6 lg:p-7 hover:bg-gray-50 dark:hover:bg-[#0f1720] transition duration-300">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">{project.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-2 font-medium">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-3 mt-3">
+                <div className="flex flex-wrap gap-2 sm:gap-3 mt-3">
                   {project.techStack.map((tech, t) => (
                     <TechIconBadge key={t}>{techIcons[tech]}</TechIconBadge>
                   ))}
                 </div>
-                <div className="flex gap-3 mt-4">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4">
                   {project.codeRepo && (
                     <motion.a
                       href={project.codeRepo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm bg-gray-200 dark:bg-[#21262d] px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white"
+                      className="text-xs sm:text-sm bg-gray-200 dark:bg-[#21262d] px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white text-center"
                       whileHover={hoverScale}
                       whileTap={tapScale}
                     >
@@ -178,14 +178,12 @@ export default function ProjectsPage() {
                       href={project.liveDemo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm bg-gray-200 dark:bg-[#21262d] px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white"
+                      className="text-xs sm:text-sm bg-gray-200 dark:bg-[#21262d] px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white text-center"
                       whileHover={hoverScale}
                       whileTap={tapScale}
                     >
                       Live Demo
                     </motion.a>
-
-                    
                   )}
                 </div>
                 </div>
@@ -197,7 +195,7 @@ export default function ProjectsPage() {
 
       {/* Other Projects */}
       <motion.h2
-        className="text-xl font-semibold mb-6 flex items-center gap-2 text-gray-900 dark:text-white"
+        className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 flex items-center gap-2 text-gray-900 dark:text-white"
         initial="initial"
         whileInView="animate"
         viewport={{ once: false, amount: 0.3 }}
@@ -207,7 +205,7 @@ export default function ProjectsPage() {
       </motion.h2>
 
       <motion.div
-        className="grid md:grid-cols-2 gap-10 mb-20"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-12 sm:mb-16 lg:mb-20"
         initial="initial"
         whileInView="animate"
         viewport={{ once: false, amount: 0.3 }}
@@ -229,29 +227,29 @@ export default function ProjectsPage() {
                 className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden
                             hover:shadow-2xl transform transition duration-300 cursor-pointer"
               >
-                <div className="h-40 bg-gray-200 dark:bg-[#0d1117] hover:scale-105 transition-transform duration-300" 
+                <div className="h-32 sm:h-40 bg-gray-200 dark:bg-[#0d1117] hover:scale-105 transition-transform duration-300" 
                      style={{ 
                        backgroundImage: project.image ? `url(/${project.image})` : 'none',
                        backgroundSize: '100% 100%',
                        backgroundRepeat: 'no-repeat'
                      }}></div>
-                <div className="p-7 hover:bg-gray-50 dark:hover:bg-[#0f1720] transition duration-300">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">
+                <div className="p-4 sm:p-6 lg:p-7 hover:bg-gray-50 dark:hover:bg-[#0f1720] transition duration-300">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">{project.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-2 font-medium">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-3 mt-3">
+                <div className="flex flex-wrap gap-2 sm:gap-3 mt-3">
                   {project.techStack.map((tech, t) => (
                     <TechIconBadge key={t}>{techIcons[tech]}</TechIconBadge>
                   ))}
                 </div>
-                 <div className="flex gap-3 mt-4">
+                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4">
                   {project.codeRepo && (
                     <motion.a
                       href={project.codeRepo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm bg-gray-200 dark:bg-[#21262d] px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white"
+                      className="text-xs sm:text-sm bg-gray-200 dark:bg-[#21262d] px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white text-center"
                       whileHover={hoverScale}
                       whileTap={tapScale}
                     >
@@ -263,14 +261,12 @@ export default function ProjectsPage() {
                       href={project.liveDemo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm bg-gray-200 dark:bg-[#21262d] px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white"
+                      className="text-xs sm:text-sm bg-gray-200 dark:bg-[#21262d] px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-[#30363d] hover:shadow-md transition font-bold text-gray-900 dark:text-white text-center"
                       whileHover={hoverScale}
                       whileTap={tapScale}
                     >
                       Live Demo
                     </motion.a>
-
-                    
                   )}
                 </div>
 

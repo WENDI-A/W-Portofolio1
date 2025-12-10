@@ -1,12 +1,13 @@
 ﻿'use client';
 
-import { FiSun, FiMoon } from "react-icons/fi";
+import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 
 import React, { useState, useEffect } from "react";
 
 const Header = () => {
     const [darkMode, setDarkMode] = useState(true);
     const [activeSection, setActiveSection] = useState("home");
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         document.documentElement.classList.toggle("dark", darkMode);
@@ -32,6 +33,18 @@ const Header = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Close mobile menu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = () => {
+            if (isMobileMenuOpen) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+        return () => document.removeEventListener('click', handleClickOutside);
+    }, [isMobileMenuOpen]);
+
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
         e.preventDefault();
         const section = document.getElementById(sectionId);
@@ -54,16 +67,18 @@ const Header = () => {
 
     return (
         <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md text-gray-900 dark:text-white shadow-md transition-colors duration-300">
-            <div className="max-w-7xl mx-auto flex justify-between px-6 py-4 items-center">
+            <div className="max-w-7xl mx-auto flex justify-between px-4 sm:px-6 py-4 items-center">
                 <a
                     href="#home"
                     onClick={(e) => handleNavClick(e, "home")}
-                    className="text-2xl font-bold cursor-pointer hover:text-purple-400 transition-colors text-xl font-bold bg-gradient-to-r from-[#a855f7] to-[#6366f1] bg-clip-text text-transparent"
+                    className="text-lg sm:text-xl md:text-2xl font-bold cursor-pointer hover:text-purple-400 transition-colors bg-gradient-to-r from-[#a855f7] to-[#6366f1] bg-clip-text text-transparent"
                 >
-                    WENDIMAGEGN ABERA
+                    <span className="hidden sm:inline">WENDIMAGEGN ABERA</span>
+                    <span className="sm:hidden">WENDI</span>
                 </a>
 
-                <nav className="space-x-12 hidden md:flex">
+                {/* Desktop Navigation */}
+                <nav className="space-x-8 lg:space-x-12 hidden md:flex">
                     <a
                         href="#home"
                         onClick={(e) => handleNavClick(e, "home")}
@@ -83,7 +98,7 @@ const Header = () => {
                         onClick={(e) => handleNavClick(e, "skill")}
                         className={navLinkClasses("skill")}
                     >
-                        Skill
+                        Skills
                     </a>
                     <a
                         href="#projects"
@@ -108,14 +123,58 @@ const Header = () => {
                     </a>
                 </nav>
 
-                <button
-                    onClick={() => setDarkMode(!darkMode)}
-                    className="ml-4 p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-800 dark:text-yellow-400 transition-all duration-300 shadow-sm"
-                    aria-label="Toggle Theme"
-                >
-                    {darkMode ? <FiSun className="w-6 h-6" /> : <FiMoon className="w-6 h-6" />}
-                </button>
+                {/* Mobile menu button and theme toggle */}
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={() => setDarkMode(!darkMode)}
+                        className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-800 dark:text-yellow-400 transition-all duration-300 shadow-sm"
+                        aria-label="Toggle Theme"
+                    >
+                        {darkMode ? <FiSun className="w-5 h-5" /> : <FiMoon className="w-5 h-5" />}
+                    </button>
+                    
+                    {/* Mobile menu button */}
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all duration-300 shadow-sm"
+                        aria-label="Toggle Menu"
+                    >
+                        {isMobileMenuOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
+                    </button>
+                </div>
             </div>
+
+            {/* Mobile Navigation Menu */}
+            {isMobileMenuOpen && (
+                <div className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-700">
+                    <nav className="px-4 py-4 space-y-3">
+                        {[
+                            { href: "#home", label: "Home", id: "home" },
+                            { href: "#about", label: "About", id: "about" },
+                            { href: "#skill", label: "Skills", id: "skill" },
+                            { href: "#projects", label: "Projects", id: "projects" },
+                            { href: "#resume", label: "Resume", id: "resume" },
+                            { href: "#contact", label: "Contact", id: "contact" }
+                        ].map((item) => (
+                            <a
+                                key={item.id}
+                                href={item.href}
+                                onClick={(e) => {
+                                    handleNavClick(e, item.id);
+                                    setIsMobileMenuOpen(false);
+                                }}
+                                className={`block py-3 px-4 rounded-lg transition-colors duration-200 ${
+                                    activeSection === item.id
+                                        ? "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 font-semibold"
+                                        : "hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
+                                }`}
+                            >
+                                {item.label}
+                            </a>
+                        ))}
+                    </nav>
+                </div>
+            )}
         </header>
     );
 };

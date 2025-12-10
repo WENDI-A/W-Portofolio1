@@ -13,25 +13,25 @@ function ContactItem({ title, value, icon, href, onClick, gradient }: { title: s
       target={href && href.startsWith("http") ? "_blank" : undefined}
       rel={href && href.startsWith("http") ? "noopener noreferrer" : undefined}
       aria-label={`${title}: ${value}`}
-      className="group w-full flex items-center gap-4 p-4 rounded-2xl bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 transition"
+      className="group w-full flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 transition"
       whileHover={{ y: -4, scale: 1.01 }}
       whileTap={{ scale: 0.995 }}
     >
       <div
-        className={`w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center transition-colors duration-200 group-hover:shadow-2xl shadow-lg ${gradient}`}
+        className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex-shrink-0 flex items-center justify-center transition-colors duration-200 group-hover:shadow-2xl shadow-lg ${gradient}`}
       >
         {icon}
       </div>
       <div>
         <div className="text-xs text-gray-400 uppercase tracking-wide">{title}</div>
-        <div className="font-semibold text-base text-gray-900 dark:text-white transition-colors group-hover:text-indigo-500 dark:group-hover:text-indigo-300">{value}</div>
+        <div className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white transition-colors group-hover:text-indigo-500 dark:group-hover:text-indigo-300">{value}</div>
       </div>
     </Motion.a>
   );
 }
 
 export default function ResumePage() {
-  const tabs = ["Education", "Skills", "Certificates", "Projects"];
+  const tabs = ["Education", "Skills", "Projects"];
   const [active, setActive] = useState("Education");
 
   const containerVariants = {
@@ -89,24 +89,24 @@ export default function ResumePage() {
   ];
 
   return (
-    <div className="bg-transparent text-gray-900 dark:text-white px-8 md:px-32 py-4 transition-colors duration-300 mt-0">
+    <div className="bg-transparent text-gray-900 dark:text-white px-4 sm:px-6 lg:px-20 xl:px-32 py-4 transition-colors duration-300 mt-0">
       {/* Header */}
       <div className="text-center mb-16">
         <Motion.div whileHover={{ scale: 1.08, rotate: 6 }} whileTap={{ scale: 0.98, rotate: 0 }} className="w-20 h-20 mx-auto transform transition cursor-pointer" aria-hidden>
           <IconBadge size="xl" bgClass="bg-gradient-to-r from-indigo-500 to-purple-500">📄</IconBadge>
         </Motion.div>
 
-        <h1 className="text-5xl font-extrabold mt-6">Resume</h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-3xl mx-auto text-lg">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold mt-4 sm:mt-6">Resume</h1>
+        <p className="text-gray-600 dark:text-gray-400 mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg">
           Download my complete resume or explore my professional journey below.
         </p>
 
-        <div className="flex justify-center gap-6 mt-10">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 lg:mt-10">
           <Motion.a
             href="/WENDIMAGEGN-ABERA-FlowCV-Resume-20251106 (1)T.pdf"
             download
             whileHover={{ scale: 1.03 }}
-            className="px-8 py-4 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition text-base font-bold text-white"
+            className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition text-sm sm:text-base font-bold text-white text-center"
           >
             Get PDF Resume
           </Motion.a>
@@ -116,7 +116,7 @@ export default function ResumePage() {
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}
-            className="px-8 py-4 rounded-lg bg-gray-200 dark:bg-[#21262d] hover:bg-gray-300 dark:hover:bg-[#30363d] transition text-base font-bold text-gray-900 dark:text-white"
+            className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-gray-200 dark:bg-[#21262d] hover:bg-gray-300 dark:hover:bg-[#30363d] transition text-sm sm:text-base font-bold text-gray-900 dark:text-white text-center"
           >
             View Online
           </Motion.a>
@@ -124,8 +124,8 @@ export default function ResumePage() {
       </div>
 
       {/* Contact summary card */}
-      <div className="mx-auto max-w-6xl bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-3xl p-10 mb-14 shadow-lg transition-colors duration-300">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+      <div className="mx-auto max-w-6xl bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 mb-10 sm:mb-14 shadow-lg transition-colors duration-300">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
           <ContactItem
             title="Location"
             value="Addis Ababa, Ethiopia"
@@ -166,9 +166,9 @@ export default function ResumePage() {
         </div>
 
         {/* Status - always below the three items, aligned with Location */}
-        <div className="mt-6 flex items-center gap-4 p-4 rounded-2xl bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 transition">
-          <div className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center bg-gradient-to-r from-orange-500 to-red-500 shadow-lg">
-            <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <div className="mt-4 sm:mt-6 sm:col-span-2 lg:col-span-1 flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 transition">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex-shrink-0 flex items-center justify-center bg-gradient-to-r from-orange-500 to-red-500 shadow-lg">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
               <line x1="16" y1="2" x2="16" y2="6" />
               <line x1="8" y1="2" x2="8" y2="6" />
@@ -177,13 +177,13 @@ export default function ResumePage() {
           </div>
           <div>
             <div className="text-xs text-gray-400 uppercase tracking-wide">Status</div>
-            <div className="font-semibold text-base text-gray-900 dark:text-white">Available Now</div>
+            <div className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white">Available Now</div>
           </div>
         </div>
       </div>
 
       {/* Tabs (centered) */}
-      <div className="flex gap-6 overflow-x-auto mb-14 justify-center">
+      <div className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto mb-10 sm:mb-14 justify-center px-4 sm:px-0">
         {tabs.map((t) => {
           const isActive = t === active;
           return (
@@ -191,7 +191,7 @@ export default function ResumePage() {
               key={t}
               onClick={() => setActive(t)}
               whileHover={{ scale: 1.03 }}
-              className={`px-6 py-3 rounded-xl text-base whitespace-nowrap font-bold focus:outline-none transition ${isActive ? "bg-indigo-600 text-white" : "bg-gray-200 dark:bg-[#21262d] hover:bg-gray-300 dark:hover:bg-[#30363d] text-gray-700 dark:text-gray-300"
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base whitespace-nowrap font-bold focus:outline-none transition ${isActive ? "bg-indigo-600 text-white" : "bg-gray-200 dark:bg-[#21262d] hover:bg-gray-300 dark:hover:bg-[#30363d] text-gray-700 dark:text-gray-300"
                 }`}
               aria-pressed={isActive}
             >
@@ -210,17 +210,17 @@ export default function ResumePage() {
                 <Motion.div whileHover={{ scale: 1.05 }} className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-indigo-700 text-white font-bold">
                   2
                 </Motion.div>
-                <h2 className="text-3xl font-bold">🎓 Education</h2>
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold">🎓 Education</h2>
               </div>
 
-              <p className="text-center text-gray-600 dark:text-gray-400 mb-8 text-lg">Academic background and achievements</p>
+              <p className="text-center text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg">Academic background and achievements</p>
 
-              <Motion.div whileHover={{ y: -6 }} className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-2xl p-10 mb-10 transition">
-                <div className="flex items-start justify-between gap-6">
-                  <div>
-                    <h3 className="text-2xl font-bold">Bachelor of Science Degree in Computer Science</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-lg">Hawassa University Institute of Technology</p>
-                    <p className="text-gray-600 dark:text-gray-500 text-sm mt-2">2021 - 2025</p>
+              <Motion.div whileHover={{ y: -6 }} className="bg-gray-100 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-2xl p-6 sm:p-8 lg:p-10 mb-8 sm:mb-10 transition">
+                <div className="flex flex-col sm:flex-row items-start justify-between gap-4 sm:gap-6">
+                  <div className="flex-1">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold">Bachelor of Science Degree in Computer Science</h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base lg:text-lg">Hawassa University Institute of Technology</p>
+                    <p className="text-gray-600 dark:text-gray-500 text-xs sm:text-sm mt-2">2021 - 2025</p>
 
                     <div className="mt-4 flex items-center gap-4">
 
@@ -230,16 +230,16 @@ export default function ResumePage() {
                     </div>
                   </div>
 
-                  <div className="flex-shrink-0 text-right">
-                    <div className="text-sm text-gray-400 mb-2">Badge</div>
-                    <div className="px-4 py-2 bg-indigo-700 text-white rounded-full text-sm font-semibold">  Distinction</div>
+                  <div className="flex-shrink-0 text-left sm:text-right">
+                    <div className="text-xs sm:text-sm text-gray-400 mb-2">Badge</div>
+                    <div className="px-3 sm:px-4 py-1 sm:py-2 bg-indigo-700 text-white rounded-full text-xs sm:text-sm font-semibold">Distinction</div>
                   </div>
                 </div>
 
-                <div className="mt-8 grid md:grid-cols-2 gap-8">
+                <div className="mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                   <div>
-                    <h4 className="text-base text-gray-700 dark:text-gray-300 font-semibold mb-3">Relevant Coursework</h4>
-                    <ul className="space-y-3 text-gray-400">
+                    <h4 className="text-sm sm:text-base text-gray-700 dark:text-gray-300 font-semibold mb-3">Relevant Coursework</h4>
+                    <ul className="space-y-2 sm:space-y-3 text-gray-400">
                       {[
                         "Data Structures",
                         "Algorithms",
@@ -248,8 +248,8 @@ export default function ResumePage() {
                         "Web Development",
                         "Machine Learning",
                       ].map((course) => (
-                        <li key={course} className="flex items-center gap-4 text-lg">
-                          <svg className="w-5 h-5 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <li key={course} className="flex items-center gap-3 sm:gap-4 text-sm sm:text-base lg:text-lg">
+                          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M20 6L9 17l-5-5" />
                           </svg>
                           <Motion.button whileHover={{ scale: 1.02 }} onClick={() => setActive("Skills")} className="text-gray-600 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 text-left">
@@ -261,9 +261,9 @@ export default function ResumePage() {
                   </div>
 
                   <div className="flex items-start">
-                    <div className="text-sm text-gray-400">
-                      <div className="mb-3 text-lg">Highlights</div>
-                      <ul className="space-y-3 text-lg">
+                    <div className="text-xs sm:text-sm text-gray-400">
+                      <div className="mb-3 text-sm sm:text-base lg:text-lg">Highlights</div>
+                      <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base lg:text-lg">
                         <li className="text-gray-700 dark:text-gray-300">Graduated with honors</li>
                         <li className="text-gray-700 dark:text-gray-300">Capstone: Scalable web application</li>
                         <li className="text-gray-700 dark:text-gray-300">Relevant tools: React, Node.js, MySQL</li>

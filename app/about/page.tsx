@@ -18,7 +18,7 @@ import {
 const About = () => {
   return (
     <div className="bg-transparent text-gray-900 dark:text-white font-sans transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <motion.header
           className="text-center mb-16"
           initial="initial"
@@ -39,10 +39,10 @@ const About = () => {
         </motion.header>
 
         {/* My Story + Background */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 group/bento">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-12 sm:mb-16 group/bento">
           {/* My Story - Takes up 8 columns */}
           <motion.div
-            className="lg:col-span-8 bg-white dark:bg-[#0f1720] border border-gray-200 dark:border-gray-800 p-8 rounded-3xl shadow-xl h-fit transition-all duration-500 group-hover/bento:opacity-40 group-hover/bento:scale-[0.98] hover:!opacity-100 hover:!scale-100"
+            className="lg:col-span-8 bg-white dark:bg-[#0f1720] border border-gray-200 dark:border-gray-800 p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl shadow-xl h-fit transition-all duration-500 group-hover/bento:opacity-40 group-hover/bento:scale-[0.98] hover:!opacity-100 hover:!scale-100"
             initial="initial"
             whileInView="animate"
             viewport={{ once: false, amount: 0.3 }}
@@ -52,10 +52,10 @@ const About = () => {
               <IconBadge size="lg" bgClass="bg-blue-500/10 text-blue-500">
                 <FaUserFriends className="text-blue-500" />
               </IconBadge>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">My Story</h2>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">My Story</h2>
             </div>
 
-            <div className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            <div className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               <div className="p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-300 cursor-default">
                 <p>
                   With 2+ years of hands-on experience in full-stack web development, I've mastered the art of building scalable, high-performance applications. My expertise spans modern frontend frameworks like React and backend technologies including Node.js and Express.js. I'm passionate about crafting clean, maintainable code and creating exceptional user experiences that drive real business value.
@@ -66,7 +66,7 @@ const About = () => {
 
           {/* Background - Takes up 4 columns */}
           <motion.div
-            className="lg:col-span-4 bg-white dark:bg-[#0f1720] border border-gray-200 dark:border-gray-800 p-8 rounded-3xl shadow-xl flex flex-col gap-8 transition-all duration-500 group-hover/bento:opacity-40 group-hover/bento:scale-[0.98] hover:!opacity-100 hover:!scale-100"
+            className="lg:col-span-4 bg-white dark:bg-[#0f1720] border border-gray-200 dark:border-gray-800 p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col gap-6 sm:gap-8 transition-all duration-500 group-hover/bento:opacity-40 group-hover/bento:scale-[0.98] hover:!opacity-100 hover:!scale-100"
             initial="initial"
             whileInView="animate"
             viewport={{ once: false, amount: 0.3 }}
@@ -76,20 +76,20 @@ const About = () => {
               <IconBadge size="lg" bgClass="bg-purple-500/10 text-purple-500">
                 <FaBriefcase className="text-purple-500" />
               </IconBadge>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Background</h2>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">Background</h2>
             </div>
 
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8">
               {/* Education */}
               <div className="p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-300 cursor-default group">
                 <div className="flex items-center gap-3 mb-2">
                   <FaGraduationCap className="text-blue-500 text-xl group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-blue-500 font-semibold text-lg">Education</span>
+                  <span className="text-blue-500 font-semibold text-sm sm:text-base lg:text-lg">Education</span>
                 </div>
-                <h3 className="text-gray-900 dark:text-white font-medium text-lg leading-tight mb-1">
+                <h3 className="text-gray-900 dark:text-white font-medium text-sm sm:text-base lg:text-lg leading-tight mb-1">
                   Bachelor of Science Degree in Computer Science
                 </h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm">
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">
                   Hawassa University Institute of Technology, 2025
                 </p>
               </div>
@@ -98,9 +98,9 @@ const About = () => {
               <div className="p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-300 cursor-default group">
                 <div className="flex items-center gap-3 mb-2">
                   <FaBriefcase className="text-blue-500 text-xl group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-blue-500 font-semibold text-lg">Current Role</span>
+                  <span className="text-blue-500 font-semibold text-sm sm:text-base lg:text-lg">Current Role</span>
                 </div>
-                <h3 className="text-gray-900 dark:text-white font-medium text-lg leading-tight mb-1">
+                <h3 className="text-gray-900 dark:text-white font-medium text-sm sm:text-base lg:text-lg leading-tight mb-1">
                   Software Engineer
                 </h3>
 
@@ -110,12 +110,12 @@ const About = () => {
               <div className="p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-300 cursor-default group">
                 <div className="flex items-center gap-3 mb-2">
                   <FaMapMarkerAlt className="text-blue-500 text-xl group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-blue-500 font-semibold text-lg">Location</span>
+                  <span className="text-blue-500 font-semibold text-sm sm:text-base lg:text-lg">Location</span>
                 </div>
-                <h3 className="text-gray-900 dark:text-white font-medium text-lg leading-tight mb-1">
+                <h3 className="text-gray-900 dark:text-white font-medium text-sm sm:text-base lg:text-lg leading-tight mb-1">
                   Addis Ababa, Ethiopia
                 </h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm">
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">
                   Available for Remote Work
                 </p>
               </div>
@@ -123,11 +123,11 @@ const About = () => {
           </motion.div>
         </div>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-6">My Journey</h2>
+        <section className="mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400 mb-4 sm:mb-6">My Journey</h2>
           <div className="relative">
-            {/* Vertical line in the center */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b from-purple-500 via-indigo-600 to-transparent opacity-60" />
+            {/* Vertical line in the center - hidden on mobile */}
+            <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b from-purple-500 via-indigo-600 to-transparent opacity-60" />
 
             {/* Journey items data and rendering */}
             {(() => {
@@ -209,8 +209,8 @@ const About = () => {
           viewport={{ once: false, amount: 0.3, margin: "-100px" }}
           variants={staggerContainer}
         >
-          <h2 className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-6 text-center mt-4">Core Values</h2>
-          <motion.div className="grid md:grid-cols-3 gap-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400 mb-4 sm:mb-6 text-center mt-4">Core Values</h2>
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 
             {/* Quality Code */}
             <motion.div
@@ -265,8 +265,8 @@ const About = () => {
           viewport={{ once: false, amount: 0.3, margin: "-100px" }}
           variants={staggerContainer}
         >
-          <h2 className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-6 text-center mt-4">Personal Interests</h2>
-          <motion.div className="grid md:grid-cols-4 gap-6 text-gray-700 dark:text-gray-300">
+          <h2 className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400 mb-4 sm:mb-6 text-center mt-4">Personal Interests</h2>
+          <motion.div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-gray-700 dark:text-gray-300">
 
             {/* Travel */}
             <motion.div

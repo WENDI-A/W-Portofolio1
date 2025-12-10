@@ -5,17 +5,17 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white py-12 px-6 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center md:text-left">
-        <div>
-          <h3 className="text-xl font-bold mb-2">WENDIMAGEGN ABERA</h3>
-          <p>
+    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white py-8 sm:py-12 px-4 sm:px-6 transition-colors duration-300">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 text-center sm:text-left">
+        <div className="sm:col-span-2 lg:col-span-1">
+          <h3 className="text-lg sm:text-xl font-bold mb-2">WENDIMAGEGN ABERA</h3>
+          <p className="text-sm sm:text-base">
             Innovative Full-Stack Web Developer crafting high-performance, scalable solutions with cutting-edge technologies and industry-leading methodologies.
           </p>
         </div>
         <div>
-          <h3 className="text-xl font-bold mb-2">Quick Links</h3>
-          <ul className="space-y-2">
+          <h3 className="text-lg sm:text-xl font-bold mb-2">Quick Links</h3>
+          <ul className="space-y-1 sm:space-y-2 text-sm sm:text-base">
             <li>
               <a
                 href="#about"
@@ -91,22 +91,22 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h3 className="text-xl font-bold mb-2">Connect</h3>
-          <div className="flex justify-center md:justify-start space-x-4">
+          <h3 className="text-lg sm:text-xl font-bold mb-2">Connect</h3>
+          <div className="flex justify-center sm:justify-start space-x-3 sm:space-x-4">
             <a href="https://github.com/WENDI-A" target="_blank" rel="noopener noreferrer" className="hover:text-purple-500 transition-colors duration-300">
-              <FaGithub className="text-2xl" />
+              <FaGithub className="text-xl sm:text-2xl" />
             </a>
             <a href="https://www.linkedin.com/in/wendimagegn-abera" target="_blank" rel="noopener noreferrer" className="hover:text-purple-500 transition-colors duration-300">
-              <FaLinkedin className="text-2xl" />
+              <FaLinkedin className="text-xl sm:text-2xl" />
             </a>
             <a href="mailto:wendiabera660@gmail.com" className="hover:text-purple-500 transition-colors duration-300">
-              <FaEnvelope className="text-2xl" />
+              <FaEnvelope className="text-xl sm:text-2xl" />
             </a>
           </div>
         </div>
       </div>
-      <hr className="my-8 border-gray-300 dark:border-gray-700"></hr>
-      <p className="text-center text-sm">
+      <hr className="my-6 sm:my-8 border-gray-300 dark:border-gray-700"></hr>
+      <p className="text-center text-xs sm:text-sm">
         &copy; {new Date().getFullYear()} WENDIMAGEGN ABERA. All rights reserved.
       </p>
     </footer>

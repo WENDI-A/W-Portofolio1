@@ -26,7 +26,7 @@ export default function Home() {
 
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="min-h-screen flex flex-col md:flex-row items-center justify-center text-left py-16 px-4 md:px-20" id="home">
+        <section className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-20" id="home">
           <motion.div
             className="flex-1"
             initial="initial"
@@ -41,11 +41,11 @@ export default function Home() {
             </motion.div>
 
             <motion.h1
-              className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              style={{ whiteSpace: 'nowrap', overflow: 'visible' }}
+              style={{ overflow: 'visible' }}
             >
               <TextType
                 text="WENDIMAGEGN ABERA"
@@ -60,7 +60,7 @@ export default function Home() {
             </motion.h1>
 
             <motion.h2
-              className="text-2xl md:text-3xl mb-6 text-gray-700 dark:text-gray-300"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 text-gray-700 dark:text-gray-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 2.5 }}
@@ -87,19 +87,19 @@ export default function Home() {
             </motion.h2>
 
             <motion.p
-              className="max-w-2xl mb-8 text-lg text-gray-600 dark:text-gray-400"
+              className="max-w-2xl mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 px-4 lg:px-0"
               variants={fadeInUp}
             >
               Passionate about architecting robust full-stack web solutions that scale seamlessly. I transform complex challenges into elegant code, leveraging cutting-edge technologies like React, Node.js, and modern frameworks to build exceptional digital experiences.
             </motion.p>
 
             <motion.div
-              className="flex flex-wrap gap-6"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 justify-center lg:justify-start"
               variants={staggerContainer}
             >
               <motion.a
                 href="#projects"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 text-lg rounded-lg transition transform duration-300"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 sm:px-8 text-sm sm:text-base lg:text-lg rounded-lg transition transform duration-300 w-full sm:w-auto text-center"
                 variants={staggerItem}
                 whileHover={hoverScale}
                 whileTap={tapScale}
@@ -119,7 +119,7 @@ export default function Home() {
               <motion.a
                 href="/WENDIMAGEGN-ABERA-FlowCV-Resume-20251106 (1)T.pdf"
                 download
-                className="bg-gray-800 hover:bg-gray-600 text-white font-bold py-3 px-8 text-lg rounded-lg transition transform duration-300"
+                className="bg-gray-800 hover:bg-gray-600 text-white font-bold py-3 px-6 sm:px-8 text-sm sm:text-base lg:text-lg rounded-lg transition transform duration-300 w-full sm:w-auto text-center"
                 variants={staggerItem}
                 whileHover={hoverScale}
                 whileTap={tapScale}
@@ -130,7 +130,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="flex-1 flex justify-center mt-12 md:mt-0"
+            className="flex-1 flex justify-center mt-8 sm:mt-12 lg:mt-0 order-first lg:order-last"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -140,7 +140,7 @@ export default function Home() {
         </section>
 
         {/* What I Do Section */}
-        <section className="bg-transparent py-16 px-6" id="services">
+        <section className="bg-transparent py-8 sm:py-12 lg:py-16 px-4 sm:px-6" id="services">
           <motion.div
             className="max-w-6xl mx-auto text-center"
             initial="initial"
@@ -155,12 +155,12 @@ export default function Home() {
               What I Do
             </motion.h2>
             <motion.div
-              className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+              className="grid sm:grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto"
               variants={staggerContainer}
             >
               {/* Frontend Development */}
               <motion.div
-                className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-700 hover:shadow-2xl transition duration-300 transform cursor-pointer"
+                className="bg-white dark:bg-gray-900 p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-700 hover:shadow-2xl transition duration-300 transform cursor-pointer"
                 variants={staggerItem}
                 whileHover={{ y: -10, scale: 1.02 }}
               >
@@ -169,15 +169,15 @@ export default function Home() {
                     <FaLaptopCode />
                   </IconBadge>
                 </div>
-                <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Frontend Development</h3>
-                <p className="text-gray-700 dark:text-gray-300">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-3 sm:mb-4 text-gray-900 dark:text-white">Frontend Development</h3>
+                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">
                   Building interactive and responsive web applications using <strong>React</strong>, <strong>Tailwind CSS</strong>, and modern UI frameworks to ensure smooth user experiences.
                 </p>
               </motion.div>
 
               {/* Backend Development */}
               <motion.div
-                className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-700 hover:shadow-2xl transition duration-300 transform cursor-pointer"
+                className="bg-white dark:bg-gray-900 p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-700 hover:shadow-2xl transition duration-300 transform cursor-pointer"
                 variants={staggerItem}
                 whileHover={{ y: -10, scale: 1.02 }}
               >
@@ -186,8 +186,8 @@ export default function Home() {
                     <FaServer />
                   </IconBadge>
                 </div>
-                <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Backend Development</h3>
-                <p className="text-gray-700 dark:text-gray-300">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-3 sm:mb-4 text-gray-900 dark:text-white">Backend Development</h3>
+                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">
                   Creating robust server-side solutions with <strong>Node.js</strong>, <strong>Express.js</strong>, and <strong>MySQL</strong> for secure, scalable, and efficient web applications.
                 </p>
               </motion.div>
@@ -221,7 +221,7 @@ export default function Home() {
         </section>
 
         {/* Call-to-Action Section */}
-        <section className="bg-transparent text-gray-900 dark:text-white py-16 px-6 text-center">
+        <section className="bg-transparent text-gray-900 dark:text-white py-8 sm:py-12 lg:py-16 px-4 sm:px-6 text-center">
           <motion.div
             initial="initial"
             whileInView="animate"
@@ -241,12 +241,12 @@ export default function Home() {
               Let's work together to bring your ideas to life. I'm here to help you create exceptional digital experiences that drive results.
             </motion.p>
             <motion.div
-              className="flex flex-wrap justify-center gap-6"
+              className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6"
               variants={staggerContainer}
             >
               <motion.a
                 href="#contact"
-                className="bg-white text-purple-700 font-bold py-4 px-8 rounded-xl text-lg flex items-center justify-center space-x-2 hover:bg-gray-200 transition transform duration-300"
+                className="bg-white text-purple-700 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl text-sm sm:text-base lg:text-lg flex items-center justify-center space-x-2 hover:bg-gray-200 transition transform duration-300 w-full sm:w-auto"
                 variants={staggerItem}
                 whileHover={hoverScale}
                 whileTap={tapScale}
@@ -269,7 +269,7 @@ export default function Home() {
 
               <motion.a
                 href="#skill"
-                className="bg-transparent border border-gray-900 dark:border-white text-gray-900 dark:text-white font-bold py-4 px-8 rounded-xl text-lg flex items-center justify-center hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-blue-700 transition transform duration-300"
+                className="bg-transparent border border-gray-900 dark:border-white text-gray-900 dark:text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl text-sm sm:text-base lg:text-lg flex items-center justify-center hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-blue-700 transition transform duration-300 w-full sm:w-auto"
                 variants={staggerItem}
                 whileHover={hoverScale}
                 whileTap={tapScale}
